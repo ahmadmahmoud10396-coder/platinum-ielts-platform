@@ -1,0 +1,15 @@
+# Public HTML contains no IELTS curriculum. All URLs are intercepted by Edge.
+[build]
+  command = "node --test tests/ielts-gate.test.mjs"
+  publish = "public"
+  edge_functions = "netlify/edge-functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "private, no-store, max-age=0"
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    X-Content-Type-Options = "nosniff"
